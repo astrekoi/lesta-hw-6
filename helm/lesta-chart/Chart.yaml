@@ -1,0 +1,13 @@
+apiVersion: v2
+name: lesta-chart
+description: Lesta Start
+type: application
+version: 0.0.1
+appVersion: "7.1"
+keywords:
+  - go
+  - postgresql
+  - web-application
+maintainers:
+  - name: Lesta Start
+    email: start@lesta.local

@@ -1,0 +1,52 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lesta-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: lesta-app
+  template:
+    metadata:
+      labels:
+        app: lesta-app
+    spec:
+      containers:
+      - name: app
+        image: lesta-start:7.1
+        ports:
+        - containerPort: 8080
+        env:
+        - name: API_PORT
+          value: "8080"
+        - name: DB_URL
+          value: "postgres://USER_DB:PWD_DB@postgres:5432/DB"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: postgres:16-alpine
+        env:
+        - name: POSTGRES_DB
+          value: "DB"
+        - name: POSTGRES_USER
+          value: "USER_DB"
+        - name: POSTGRES_PASSWORD
+          value: "PWD_DB"
+        ports:
+        - containerPort: 5432

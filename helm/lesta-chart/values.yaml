@@ -1,0 +1,35 @@
+# App
+app:
+  name: lesta-app
+  image: lesta-start:7.1
+  replicas: 2
+  port: 8080
+  env:
+    apiPort: "8080"
+
+# DB
+postgres:
+  name: postgres
+  image: postgres:16-alpine
+  replicas: 1
+  port: 5432
+  database: "DB"
+  user: "USER_DB"
+  password: "PWD_DB"
+
+# Service
+service:
+  app:
+    type: NodePort
+    port: 80
+    targetPort: 8080
+    nodePort: 30080
+  postgres:
+    type: ClusterIP
+    port: 5432
+
+# Ingress
+ingress:
+  enabled: true
+  host: lesta.local
+  path: /
