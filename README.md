@@ -28,7 +28,6 @@
 
 ### Способ 1: Через kubectl (простой)
 ```
-git clone  && cd 
 chmod +x *.sh
 ./setup.sh
 ./deploy.sh
@@ -36,7 +35,6 @@ chmod +x *.sh
 
 ### Способ 2: Через Helm Chart (продвинутый)
 ```
-git clone  && cd 
 chmod +x *.sh
 ./setup.sh
 ./deploy-helm.sh
@@ -44,7 +42,7 @@ chmod +x *.sh
 
 **После успешного развертывания:**
 - NodePort доступ: `http://:30080`
-- Ingress доступ: `http://lesta.local` (требует настройку hosts)
+- Ingress доступ:  `http://lesta.local` (требует настройку hosts)
 - Проверка работы: `curl http://:30080/ping`
 
 ## Как работает Kubernetes развертывание
@@ -164,3 +162,5 @@ helm status lesta-app
 - Доступность эндпоинта `/ping`
 - Логи без ошибок подключения к БД
 ```
+
+![проверка работы](./images/image.png)
